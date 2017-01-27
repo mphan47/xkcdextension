@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>XKCD</title>
+  <meta name="XKCD browser as an extension" content="XKCD browser as an extension">
+  <link rel="stylesheet" type="text/css" href="css/xkcd-ext.css">
+  <script type="text/javascript" src="js/xkcd-ext.js" async></script>
+</head>
+
+<body>
+	<header>
+    	<h1 id="comicTitle"></h1>
+    	<h2 id="comicNumber">comic number</h1>
+ 	</header>
+  	<table id="comictable">   	
+		  <tr id="toptr">
+			 <ul class="navBar" id="topNav">
+				<li id="firstTop">
+          <button><|</button>
+        </li>
+				<li id="prevTop">
+          <button onclick="getPrev()">< Prev</button>
+        </li>
+				<li id="randomTop">
+          <button onclick="getRandom()">Random</button>
+        </li>
+				<li id="nextTop">
+          <button onclick="getNext()">Next ></button>
+        </li>
+				<li id="lastTop">
+          <button onclick="getRecent()">>|</button>    
+        </li>
+			 </ul>
+   		</tr>
+    	<tr id="comictr">
+   	    <img id="comicImg">
+        <img src="testpic.jpg" alt="testpicture" style="width:640px;height:400px;">
+   		</tr>
+   	  <tr id="bottomtr">
+   		 <ul class="navBar" id="bottomNav">
+				<li id="firstBottom">
+          <button onclick="getFirst()"><|</button>
+        </li>
+				<li id="prevBottom">
+          <button onclick="getPrev()">< Prev</button>
+        </li>
+				<li id="randomBottom">
+          <button onclick="getRandom()">Random</button>
+        </li>
+				<li id="nextBottom">
+          <button onclick="getNext()">Next ></button>
+        </li>
+				<li id="lastBottom">
+          <button onclick="getRecent()">>|</button>
+        </li>
+			 </ul>
+		  </tr>	
+  		<p>
+  			<a href="https://xkcd.com/">https://xkcd.com/<a>
+  		</p>
+  	</table> 	
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "author": "Michael Phan",
+  "name": "XKCD Chrome Extension",
+  "version": "1.0",
+  "description": "XKCD viewer from a chrome extension.",
+  "permissions": ["http://xkcd.com/", "http://*/"],
+
+  "browser_action": {
+    "default_icon": "xkcd.png",
+    "default_popup": "xkcd-ext.html"
+  }
+ 
+}
