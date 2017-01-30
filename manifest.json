@@ -4,7 +4,7 @@
   "name": "XKCD Chrome Extension",
   "version": "1.0",
   "description": "XKCD viewer from a chrome extension.",
-  "permissions": ["http://xkcd.com/", "http://*/"],
+  "permissions": ["https://*/", "http://*/*"],
 
   "browser_action": {
     "default_icon": "xkcd.png",
