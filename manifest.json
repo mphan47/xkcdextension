@@ -3,12 +3,11 @@
   "author": "Michael Phan",
   "name": "XKCD Chrome Extension",
   "version": "1.0",
-  "description": "XKCD viewer from a chrome extension.",
-  "permissions": ["https://*/", "http://*/*"],
+  "description": "XKCD comic viewer from a chrome extension.",
+  "permissions": ["https://*/", "http://*/*", "tabs"],
 
   "browser_action": {
     "default_icon": "xkcd.png",
     "default_popup": "xkcd-ext.html"
   }
- 
 }

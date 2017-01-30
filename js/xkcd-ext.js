@@ -2,7 +2,7 @@ var xhr = new XMLHttpRequest();
 var current = 0;
 var recent = 0;
 
-//ftb = first top bottom, add an event listener to call for the right comic
+//top buttons
 var ftb = document.getElementById("firstTop");
 ftb.addEventListener("click", getFirst, false);
 var ptb = document.getElementById("prevTop");
@@ -13,7 +13,7 @@ var ntb = document.getElementById("nextTop");
 ntb.addEventListener("click", getNext, false);
 var ltb = document.getElementById("lastTop");
 ltb.addEventListener("click", getRecent, false);
-
+//bottom buttons
 var fbb = document.getElementById("firstBottom");
 fbb.addEventListener("click", getFirst, false);
 var pbb = document.getElementById("prevBottom");
@@ -25,10 +25,10 @@ nbb.addEventListener("click", getNext, false);
 var lbb = document.getElementById("lastBottom");
 lbb.addEventListener("click", getRecent, false);
 
+//set up the page initially
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
     	if (xhr.status === 200){
-    		
     		var text = JSON.parse(this.responseText);
     		current = Number(text.num);
     		if(current > recent){
@@ -40,13 +40,7 @@ xhr.onreadystatechange = function() {
     	}
     }
 }
-
-defaultSetup();
-
-//onload is a property of the request - when req is filled, setuppage(html)
-function defaultSetup(){
-	getRecent();
-}
+getRecent();
 
 function getComic(comicUrl){
 	xhr.open('GET', comicUrl, 'true')
@@ -65,7 +59,8 @@ function getPrev(){
 }
 
 function getRandom(){
-  	document.getElementById('comicTitle').innerHTML = "getRandomCalled";
+  	randomNum = Math.floor(Math.random() * recent) + 1;
+    getComic('http://xkcd.com/' + randomNum + '/info.0.json');
 }
 
 function getNext(){
@@ -78,6 +73,3 @@ function getNext(){
 function getRecent(){
 	getComic('https://xkcd.com/info.0.json');
 }
-
-
-//add buttons and listeners to each button (nav bars)

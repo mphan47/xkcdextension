@@ -1,5 +1,8 @@
 body {
     text-align: center;
+    font-size: 12px;
+    font-variant: small-caps;
+    font-family: Lucida,Helvetica,sans-serif;
   }
 
 ul{
@@ -11,11 +14,35 @@ li{
   display: inline-block;
 }
 
-/*placeholder css*/
 button { 
-    color:#050; 
-    font: old 84% 'trebuchet ms',helvetica,sans-serif; 
-    background-color:#fed; 
+    background-color: #3C7082;
     border:1px solid; 
     border-color: #696 #363 #363 #696; 
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #888888;
+    color: white;
+    font-family: Lucida,Helvetica,sans-serif;
+    font-variant: small-caps; 
+    font-weight: 600;
+    margin: 3px;
+    padding: 1.5px 12px;
 }
+
+button:hover{
+    background-color: white;
+    color: #3C7082; 
+
+}
+
+body{
+	width: 700px;
+    height: 500px;
+}
+
+#comicImg{
+	max-width: 600px;
+    max-height: 377px;
+    width: auto;
+    height: auto;
+}
+
