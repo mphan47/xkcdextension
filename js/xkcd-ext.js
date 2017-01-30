@@ -1,5 +1,6 @@
 var xhr = new XMLHttpRequest();
-//defaultSetup();
+var current = 0;
+var recent = 0;
 
 //ftb = first top bottom, add an event listener to call for the right comic
 var ftb = document.getElementById("firstTop");
@@ -24,53 +25,43 @@ nbb.addEventListener("click", getNext, false);
 var lbb = document.getElementById("lastBottom");
 lbb.addEventListener("click", getRecent, false);
 
-
-xhr.responseType = "json";
 xhr.onreadystatechange = function() {
-    if (xhr.readyState == XMLHttpRequest.DONE) {
-        //console.log(readBody(req));
-        alert(xhr.responseText);
+    if (xhr.readyState === 4) {
+    	if (xhr.status === 200){
+    		
+    		var text = JSON.parse(this.responseText);
+    		current = Number(text.num);
+    		if(current > recent){
+    			recent = current;
+    		}
+    		document.getElementById('comicTitle').innerHTML = text.title;
+    		document.getElementById('comicNumber').innerHTML = "#" + text.num;
+    		document.getElementById('comicImg').src = text.img;
+    	}
     }
 }
-xhr.open('GET', 'http://xkcd.com/info.0.json', true);
-xhr.send(null);
 
+defaultSetup();
 
 //onload is a property of the request - when req is filled, setuppage(html)
 function defaultSetup(){
-	req.onload = fillPage();
-	req.open("GET", "http://xkcd.com/info.0.json", true);
-	req.send();
+	getRecent();
 }
-
-function fillPage() {
-  	//breaks the function(why?)
-	//var response = JSON.parse(req); 
-  	
-  	var data = req.responseText;
-
-  	//also breaks function
-  	//var jsonResponse = JSON.parse(data);
-  	document.getElementById('comicTitle').innerHTML = "called from fillPage";
-
-}
-
 
 function getComic(comicUrl){
-	current = this.response.comicUrl;
-	req.open('GET', comicUrl, 'true')
+	xhr.open('GET', comicUrl, 'true')
+	xhr.send();
 }
 
 function getFirst(){
-	current = 1;
 	getComic('http://xkcd.com/1/info.0.json');
 }
 
 function getPrev(){
 	if(current > 1){
-		current = current-1;
-		getComic('http://xkcd.com/' + current + '/info.0.json');
+		current = Number(current-1);
 	}
+	getComic('http://xkcd.com/' + current + '/info.0.json');
 }
 
 function getRandom(){
@@ -78,11 +69,14 @@ function getRandom(){
 }
 
 function getNext(){
-	getComic
+	if(current < recent){
+		current = Number(current+1);	
+	}
+	getComic('http://xkcd.com/' + current + '/info.0.json');
 }
 
 function getRecent(){
-	getComic();
+	getComic('https://xkcd.com/info.0.json');
 }
 
 
