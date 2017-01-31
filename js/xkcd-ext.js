@@ -25,21 +25,19 @@ nbb.addEventListener("click", getNext, false);
 var lbb = document.getElementById("lastBottom");
 lbb.addEventListener("click", getRecent, false);
 
-//set up the page initially
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-    	if (xhr.status === 200){
-    		var text = JSON.parse(this.responseText);
-    		current = Number(text.num);
-    		if(current > recent){
-    			recent = current;
-    		}
-    		document.getElementById('comicTitle').innerHTML = text.title;
-    		document.getElementById('comicNumber').innerHTML = "#" + text.num;
-    		document.getElementById('comicImg').src = text.img;
-    	}
+
+xhr.onload = function() {
+    var text = JSON.parse(this.responseText);
+    current = Number(text.num);
+    if(current > recent){
+        recent = current;
     }
+    document.getElementById('comicTitle').innerHTML = text.title;
+    document.getElementById('comicNumber').innerHTML = "#" + text.num;
+    document.getElementById('comicImg').src = text.img;     
 }
+
+//initial setup - call for most recent comic
 getRecent();
 
 function getComic(comicUrl){
