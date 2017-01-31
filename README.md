@@ -1,5 +1,3 @@
-Extension Authors: Michael Phan, Eric Tang
-
 Credit: 
 XKCD is a hilarious series of comics created by Randall Munroe.
 More info: https://xkcd.com/about/
